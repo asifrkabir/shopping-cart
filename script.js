@@ -1,7 +1,10 @@
+const phonePrice = 1219;
+const casePrice = 59;
+
 //phone plus button event handler
 const plusBtnPhone = document.getElementById("btn-plus-phone");
 plusBtnPhone.addEventListener("click", function () {
-    increment("quantity-phone");
+    increment("quantity-phone", "phone-price");
   })
 
 
@@ -9,7 +12,7 @@ plusBtnPhone.addEventListener("click", function () {
 const minusBtnPhone = document.getElementById("btn-minus-phone");
 minusBtnPhone.addEventListener("click", function () {
     if(document.getElementById("quantity-phone").value > 0){
-        decrement("quantity-phone");
+        decrement("quantity-phone", "phone-price");
     }
   })
 
@@ -17,7 +20,7 @@ minusBtnPhone.addEventListener("click", function () {
 //case plus button event handler
 const plusBtnCase = document.getElementById("btn-plus-case");
 plusBtnCase.addEventListener("click", function () {
-    increment("quantity-case");
+    increment("quantity-case", "case-price");
   })
 
 
@@ -25,17 +28,29 @@ plusBtnCase.addEventListener("click", function () {
 const minusBtnCase = document.getElementById("btn-minus-case");
 minusBtnCase.addEventListener("click", function () {
     if(document.getElementById("quantity-case").value > 0){
-        decrement("quantity-case");
+        decrement("quantity-case", "case-price");
     }
   })
 
 
 
 
-function increment(id){
-    document.getElementById(id).value++;
+function increment(id1, id2){
+    document.getElementById(id1).value++;
+    if(id2 == "phone-price"){
+        document.getElementById(id2).innerText = document.getElementById(id1).value * phonePrice;
+    }
+    else if(id2 == "case-price"){
+        document.getElementById(id2).innerText = document.getElementById(id1).value * casePrice;
+    }
 }
 
-function decrement(id){
-    document.getElementById(id).value--;
+function decrement(id1, id2){
+    document.getElementById(id1).value--;
+    if(id2 == "phone-price"){
+        document.getElementById(id2).innerText = document.getElementById(id1).value * phonePrice;
+    }
+    else if(id2 == "case-price"){
+        document.getElementById(id2).innerText = document.getElementById(id1).value * casePrice;
+    }
 }
